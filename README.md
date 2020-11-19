@@ -15,3 +15,9 @@ Forum permettant à des utilisateurs de pouvoir partager des sujets de conversat
     - [ ] Administrateurs
 - [ ] Connexion / Déconnexion
 - [ ] Création d'un topic
+
+## Vulnérabilités connues à patcher
+
+- [ ] CSRF Protection
+- [ ] XSS à minimiser
+- [ ] Injections SQL
