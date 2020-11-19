@@ -16,7 +16,7 @@ Forum permettant à des utilisateurs de pouvoir partager des sujets de conversat
 - [ ] Connexion / Déconnexion
 - [ ] Création d'un topic
 
-## Vulnérabilités connues à patcher
+## Vulnérabilités connues à patcher
 
 - [ ] CSRF Protection
 - [ ] XSS à minimiser
