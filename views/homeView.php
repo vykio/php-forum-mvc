@@ -1,0 +1,1 @@
+<h2 class="center">Bienvenue sur le forum</h2>
