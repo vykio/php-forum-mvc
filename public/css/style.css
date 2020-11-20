@@ -1,3 +1,47 @@
 .center {
     text-align: center;
 }
+
+.container {
+    max-width: 500px;
+    min-width: 200px;
+    margin: auto
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    align-content: stretch;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.line > input {
+    flex: 1;
+    min-width: 225px;
+}
+
+.full {
+    box-sizing: border-box;
+    width: 100% 
+}
+
+.input {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.registerBtn {
+    position: absolute;
+    right: 0;
+}
+
+.errorMessage {
+    color: white;
+    background-color: red;
+    text-align: center;
+    border-radius: 3px;
+    padding: 5px;
+}
