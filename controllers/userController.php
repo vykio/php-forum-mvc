@@ -4,7 +4,7 @@ use forum\models\UserRepository;
 
 require_once("models/UserRepository.php");
 
-function showRegister() {
+function showRegister($errorMessage = null) {
     require_once("views/header.php"); 
 
     require("views/registerView.php");
@@ -20,31 +20,31 @@ function registerUser($pseudo, $name, $firstname, $email, $password) {
             if (strlen($firstname) >= 3 && strlen($firstname) <= 32 && preg_match('/[a-zA-Z- ]+/', $firstname)){
 				if (strlen($password) >= 6 && strlen($password) <= 60) {
 					if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-						if (!$userRepository->notDuplicate("email")) {
-                            if (!$userRepository->notDuplicate("pseudo")) {
+						if (!$userRepository->isDuplicate("email", $email)) {
+                            if (!$userRepository->isDuplicate("pseudo", $pseudo)) {
                                 $userRepository->createUser($pseudo, $name, $firstname, $email, $password);
                                 showRegister();
                             } else {
-                                die("pseudo duplicate");
+                                showRegister("Le pseudo est déjà utilisé");
                             }
                         } else {
-                            die("email duplicate");
+                            showRegister("Cette adresse mail a déjà été utilisée");
                         }
                     } else {
-                        die("email invalide");
+                        showRegister("Cette email n'est pas conforme");
                     }
                 } else {
-                    die("password entre 6 et 60 caractères");
+                    showRegister("Le mot de passe doit contenir entre 6 et 60 caractères");
                 }
 
             } else {
-                die("nom entre 3 et 32 caractères"); 
+                showRegister("Le nom doit contenir entre 3 et 32 caractères"); 
             }
         }else {
-            die("prénom entre 3 et 32 caractères");
+            showRegister("Le prénom doit contenir entre 3 et 32 caractères");
         }
     } else {
-        die("pseudo entre 3 et 32 caractères");
+        showRegister("Le pseudo doit contenir entre 3 et 32 caractères");
     }
     
 }

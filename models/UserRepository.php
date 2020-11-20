@@ -25,8 +25,9 @@ class UserRepository extends Repository {
         ));
     }
 
-    public function notDuplicate($field) {
-        return !$this->query("SELECT ". $field ." FROM users WHERE " . $field."=:field", array("field"=>$field));
+    public function isDuplicate($field, $value) {
+        $req = $this->query("SELECT ". $field ." FROM users WHERE " . $field."=:".$field, array("".$field=>"".$value));
+        return !empty($req->fetch());
     }
 
 }
